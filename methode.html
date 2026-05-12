@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ma Méthode | Julien FLORENCE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="prestige.css">
+    <style>
+        .about-card p { font-size: 0.95rem; color: var(--text-dim); line-height: 1.8; text-align: justify; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo">STRUC.IA</a>
+        <div class="burger-menu" id="burger">
+            <div></div><div></div><div></div>
+        </div>
+        <nav class="nav-links" id="nav">
+            <a href="index.html">Accueil</a>
+            <a href="methode.html">Ma Méthode</a>
+            <a href="services.html">Services</a>
+            <a href="https://julienflorenceflorence-oss.github.io/cv-prestige/index.html" target="_blank">Mon CV</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <div class="app-container scroll-enabled">
+        <section id="about">
+            <h2 class="section-title">Ma Méthodologie</h2>
+            <div class="about-grid">
+                <div class="about-card">
+                    <h3><span>01</span> Précision Comportementale</h3>
+                    <p>Ma démarche repose sur l'analyse de <span class="highlight-prestige">données comportementales ultra-ciblées</span>. Modélisation de flux adaptés aux comportements réels.</p>
+                </div>
+                <div class="about-card">
+                    <h3><span>02</span> Psychologie Appliquée</h3>
+                    <p>J'intègre les outils pédagogiques <span class="highlight-prestige">DISC et PCM (Process Communication Model)</span> pour décoder les interactions humaines.</p>
+                </div>
+                <div class="about-card">
+                    <h3><span>03</span> Capital Humain</h3>
+                    <p>Une vision de développement qui capitalise sur l'humain. Création de structures où chaque individu devient un maillon stratégique.</p>
+                </div>
+                <div class="about-card">
+                    <h3><span>04</span> Vision "Coaching Handball"</h3>
+                    <p>Directement inspiré par le terrain : vision de jeu rapide, cohésion tactique et <span class="highlight-prestige">réactivité chirurgicale</span>.</p>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer-prestige">
+            <p>&copy; 2026 STRUC.IA - Julien FLORENCE</p>
+            <div class="footer-shortcuts">
+                <a href="contact.html" style="text-decoration: none; color: var(--primary-gold); font-family: 'Cinzel'; font-size: 0.8rem; letter-spacing: 2px;">Me Contacter</a>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        const burger = document.getElementById('burger');
+        const nav = document.getElementById('nav');
+        burger.addEventListener('click', () => {
+            nav.classList.toggle('active');
+            burger.classList.toggle('toggle');
+        });
+    </script>
+</body>
+</html>

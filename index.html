@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accueil | Julien FLORENCE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="prestige.css">
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo">STRUC.IA</a>
+        <div class="burger-menu" id="burger">
+            <div></div><div></div><div></div>
+        </div>
+        <nav class="nav-links" id="nav">
+            <a href="index.html">Accueil</a>
+            <a href="methode.html">Ma Méthode</a>
+            <a href="services.html">Services</a>
+            <a href="https://julienflorenceflorence-oss.github.io/cv-prestige/index.html" target="_blank">Mon CV</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <div class="app-container">
+        <section class="hero">
+            <div class="content-wrapper">
+                <div class="hero-text">
+                    <span style="color: var(--primary-gold); font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 5px; margin-bottom: 20px; display: block;">L'Expansion de l'Être</span>
+                    <h1 class="hero-title">
+                        "Ce n'est pas ce que vous êtes qui vous retient, mais ce que vous <span>pensez ne pas être</span>."
+                    </h1>
+                    <p style="font-family: 'Cinzel', serif; font-size: 0.9rem; color: var(--primary-gold); margin-top: -20px; margin-bottom: 30px; opacity: 0.8; letter-spacing: 2px;">— Denis Waitley</p>
+                    <p class="hero-subtitle">
+                        Expert Freelance en développement de structures et architectures de systèmes intelligents.
+                    </p>
+                    <a href="methode.html" class="cta-button">Explorer la Méthode</a>
+                </div>
+                <div class="hero-image-container">
+                    <img src="../agent soutenance/PROJET_CV/photo/cerveau 3.0.png" alt="Cerveau 3.0" style="width: 100%; border-radius: 5px; box-shadow: 0 0 50px rgba(0, 0, 0, 0.8); border: 1px solid rgba(212, 175, 55, 0.3); filter: grayscale(0.2) contrast(1.1); animation: pulseGlow 4s infinite alternate;">
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        const burger = document.getElementById('burger');
+        const nav = document.getElementById('nav');
+        burger.addEventListener('click', () => {
+            nav.classList.toggle('active');
+            burger.classList.toggle('toggle');
+        });
+    </script>
+</body>
+</html>
