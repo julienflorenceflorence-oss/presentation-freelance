@@ -61,19 +61,19 @@
             color: var(--primary-gold);
             font-size: 1rem;
             margin-bottom: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-        }
-        .about-card h3 span {
-            font-size: 0.7rem;
-            opacity: 0.6;
-            border: 1px solid var(--primary-gold);
-            padding: 2px 8px;
-            border-radius: 2px;
+            text-transform: uppercase;
             letter-spacing: 1px;
-            margin-bottom: 5px;
+        }
+        .card-icon {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 10px var(--gold-glow));
+        }
+        .card-icon svg {
+            width: 100%;
+            height: 100%;
+            fill: var(--primary-gold);
         }
         .about-card p { font-size: 0.85rem; color: var(--text-dim); line-height: 1.6; text-align: center; }
         .highlight-prestige { color: var(--primary-gold); font-weight: 600; }
@@ -123,19 +123,31 @@
             <h2 class="section-title">Ma Méthodologie</h2>
             <div class="about-grid">
                 <div class="about-card">
-                    <h3><span>01</span> Précision Comportementale</h3>
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12,2A10,10 0 1,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M11,6V10H7V12H11V16H13V12H17V10H13V6H11Z"/></svg>
+                    </div>
+                    <h3>Précision Comportementale</h3>
                     <p>Ma démarche repose sur l'analyse de <span class="highlight-prestige">données comportementales ultra-ciblées</span>. Modélisation de flux adaptés aux comportements réels.</p>
                 </div>
                 <div class="about-card">
-                    <h3><span>02</span> Psychologie Appliquée</h3>
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24"><path d="M13,3C9.13,3 6,6.13 6,10C6,11.23 6.32,12.39 6.88,13.39L5,17H9.11C10.23,17.64 11.57,18 13,18C16.87,18 20,14.87 20,11C20,7.13 16.87,4 13,4V3M13,6C15.76,6 18,8.24 18,11C18,13.76 15.76,16 13,16C11.9,16 10.89,15.65 10.06,15.06L9,15.82V15H8C7.38,15 6.84,14.72 6.5,14.28C6.18,13.73 6,13.1 6,12.44C6,10 8.24,7.76 11,7.76C11,6.79 11.9,6 12.87,6H13Z"/></svg>
+                    </div>
+                    <h3>Psychologie Appliquée</h3>
                     <p>J'intègre les outils pédagogiques <span class="highlight-prestige">DISC et PCM (Process Communication Model)</span> pour décoder les interactions humaines.</p>
                 </div>
                 <div class="about-card">
-                    <h3><span>03</span> Capital Humain</h3>
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24"><path d="M16,13C15.71,13 15.38,13 15.03,13.05C16.19,13.89 17,15.22 17,16.5V19H22V16.5C22,14.61 18.94,13.5 16,13M8,13C5.06,13 2,14.61 2,16.5V19H14V16.5C14,14.61 10.94,13.5 8,13M8,11A3,3 0 1,0 5,8A3,3 0 0,0 8,11M16,11A3,3 0 1,0 13,8A3,3 0 0,0 16,11Z"/></svg>
+                    </div>
+                    <h3>Capital Humain</h3>
                     <p>Une vision de développement qui capitalise sur l'humain. Création de structures où chaque individu devient un maillon stratégique.</p>
                 </div>
                 <div class="about-card">
-                    <h3><span>04</span> Vision "Coaching Handball"</h3>
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12,2A10,10 0 1,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12,11A1,1 0 1,1 11,12A1,1 0 0,1 12,11M10,8A1,1 0 1,1 9,9A1,1 0 0,1 10,8M14,8A1,1 0 1,1 13,9A1,1 0 0,1 14,8M10,14A1,1 0 1,1 9,15A1,1 0 0,1 10,14M14,14A1,1 0 1,1 13,15A1,1 0 0,1 14,14Z"/></svg>
+                    </div>
+                    <h3>Vision Tactique</h3>
                     <p>Directement inspiré par le terrain : vision de jeu rapide, cohésion tactique et <span class="highlight-prestige">réactivité chirurgicale</span>.</p>
                 </div>
             </div>
