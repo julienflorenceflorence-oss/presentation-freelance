@@ -74,10 +74,15 @@ header {
     gap: 6px;
     cursor: pointer;
     z-index: 2001;
+    padding: 10px; /* Zone de clic étendue */
+    min-width: 44px;
+    min-height: 44px;
+    justify-content: center;
+    align-items: center;
 }
 
 .burger-menu div {
-    width: 30px;
+    width: 25px;
     height: 2px;
     background: var(--primary-gold);
     transition: all 0.3s ease;
