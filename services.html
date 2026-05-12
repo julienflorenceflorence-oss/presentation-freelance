@@ -234,15 +234,15 @@
             }
 
             .player-trigger img { 
-                width: 60px; 
-                height: 60px;
+                width: 100px; 
+                height: 100px;
                 object-fit: cover;
-                border-radius: 50%;
-                border: 1px solid var(--primary-gold);
-                filter: brightness(0.8) contrast(1.1);
+                border-radius: 10px;
+                border: 1px solid rgba(212, 175, 55, 0.4);
+                filter: brightness(0.9) contrast(1.1);
             }
 
-            .player-trigger .num { font-size: 1.5rem; width: 30px; opacity: 1; color: var(--primary-gold); font-family: 'Cinzel', serif; }
+            .player-trigger .num { font-size: 2rem; width: 40px; opacity: 1; color: var(--primary-gold); font-family: 'Cinzel', serif; }
 
             .player-trigger.active {
                 background: rgba(212, 175, 55, 0.1);
@@ -253,6 +253,33 @@
             .player-trigger.active img {
                 filter: brightness(1.2) contrast(1.2);
                 transform: scale(1.1);
+            }
+
+            /* Coach Vision : Immersion Premium */
+            .coach-vision {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin-top: 30px;
+            }
+
+            .coach-main {
+                height: 350px;
+                width: auto;
+                opacity: 0.6;
+                margin-bottom: -60px;
+            }
+
+            .hq-tablet {
+                position: relative;
+                top: auto;
+                left: auto;
+                width: 100%;
+                max-width: 320px;
+                height: 220px;
+                transform: none;
+                margin: 0 auto 30px;
             }
 
             /* Panel Info : Intégré directement sous la carte active */
