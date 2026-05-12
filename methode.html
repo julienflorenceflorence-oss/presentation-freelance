@@ -62,16 +62,27 @@
         .about-card p { font-size: 0.9rem; color: var(--text-dim); line-height: 1.8; text-align: justify; }
         .highlight-prestige { color: var(--primary-gold); font-weight: 600; }
 
-        /* Correction Visibilité CTA */
+        /* Correction Visibilité CTA Ultra-Premium */
         .cta-container {
             text-align: center;
-            margin-top: 80px;
-            margin-bottom: 40px;
-            padding-bottom: 40px;
+            margin: 100px auto 60px;
+            padding: 40px;
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+            max-width: 800px;
         }
         .cta-button.prominent {
-            background: rgba(212, 175, 55, 0.1);
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+            background: var(--primary-gold);
+            color: #000;
+            box-shadow: 0 0 30px var(--gold-glow);
+            padding: 22px 60px;
+            font-size: 1.1rem;
+            border: none;
+        }
+        .cta-button.prominent:hover {
+            background: #fff;
+            color: #000;
+            box-shadow: 0 0 50px rgba(255, 255, 255, 0.4);
+            transform: scale(1.05);
         }
     </style>
 </head>
