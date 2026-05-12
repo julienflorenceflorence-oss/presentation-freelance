@@ -198,92 +198,91 @@
         @keyframes pulse { from { opacity: 0.5; transform: scale(1); } to { opacity: 1; transform: scale(1.3); } }
 
         @media (max-width: 1024px) {
-            html, body { height: auto !important; overflow-x: hidden !important; overflow-y: auto !important; }
+            html, body { 
+                height: auto !important; 
+                overflow-x: hidden !important; 
+                overflow-y: auto !important;
+                position: relative;
+                width: 100% !important;
+            }
+            
             .app-container { 
                 height: auto !important; 
                 min-height: 100vh; 
-                padding: 80px 15px 40px; 
+                padding: 70px 10px 40px; /* Moins de padding pour gagner de l'espace */
                 justify-content: flex-start;
-                display: block; /* Passage en block pour un flux naturel */
+                display: block;
+                width: 100%;
+                box-sizing: border-box;
             }
             
-            .services-header { margin-bottom: 25px; }
-            .section-title { font-size: 1.6rem; }
+            .services-header { margin-bottom: 20px; padding: 0 10px; }
+            .section-title { font-size: 1.5rem; }
 
             .tactical-stage { 
-                flex-direction: column; 
-                height: auto; 
-                gap: 20px;
-                perspective: none;
-                display: block;
-            }
-
-            /* Équipe en mode "Cards" sur mobile */
-            .field-team { 
                 display: flex;
                 flex-direction: column; 
-                width: 100%;
-                gap: 12px;
-                margin-bottom: 30px;
-            }
-
-            .player-trigger {
-                background: rgba(255, 255, 255, 0.04);
-                border: 1px solid rgba(212, 175, 55, 0.2);
-                padding: 12px;
-                border-radius: 12px;
+                height: auto; 
+                gap: 15px;
                 width: 100%;
                 box-sizing: border-box;
             }
 
-            .player-trigger img { 
-                width: 80px; 
-                height: 80px;
-                border-radius: 8px;
+            .field-team { 
+                width: 100%;
+                padding: 0 10px;
+                box-sizing: border-box;
+                margin-bottom: 20px;
             }
 
-            /* Coach Vision & Tablette */
+            .player-trigger {
+                padding: 10px;
+                gap: 10px;
+            }
+
+            .player-trigger img { 
+                width: 70px; 
+                height: 70px;
+            }
+
+            /* Coach & Tablette Fluide */
             .coach-vision {
                 width: 100%;
-                margin-top: 10px;
-                position: relative;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
             }
 
             .coach-main {
-                height: 320px;
-                opacity: 0.5;
-                margin-bottom: -40px;
+                height: auto;
+                width: 100%;
+                max-width: 300px;
+                opacity: 0.4;
+                margin-bottom: -50px;
             }
 
             .hq-tablet {
                 position: relative;
-                width: 100%;
-                max-width: 340px;
-                height: 240px;
-                margin: 0 auto 20px;
-                z-index: 30;
-            }
-
-            /* Panel Info : Totalement fluide */
-            .intel-panel { 
-                position: relative; 
-                width: 100%; 
-                right: auto;
-                bottom: auto;
-                margin-top: 20px;
-                max-height: 0;
-                opacity: 0;
-                overflow: visible; /* Permettre au texte de déborder si besoin après l'animation */
-                transition: all 0.6s ease;
-                padding: 0;
+                width: 92%; /* Fluide selon l'écran */
+                height: auto;
+                aspect-ratio: 1.4 / 1; /* Garde les proportions */
+                margin: 0 auto;
+                transform: none;
+                left: auto;
+                top: auto;
                 box-sizing: border-box;
             }
 
-            .intel-panel.show { 
-                max-height: 1000px; /* Large limite pour éviter toute coupure */
-                opacity: 1; 
-                padding: 20px;
-                margin-bottom: 30px;
+            /* Panel Info */
+            .intel-panel { 
+                position: relative; 
+                width: 92%; 
+                margin: 20px auto;
+                box-sizing: border-box;
+                left: auto !important;
+                right: auto !important;
             }
         }
 
