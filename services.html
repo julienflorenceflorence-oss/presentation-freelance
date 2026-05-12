@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Services | Julien FLORENCE</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="prestige.css?v=1.2">
+    <link rel="stylesheet" href="prestige.css?v=2.0">
     <style>
         /* --- Orientation Lock Overlay --- */
         #orientation-overlay {
@@ -34,13 +34,12 @@
             100% { transform: rotate(0deg); }
         }
 
-        /* Bloquer paysage sur mobiles et tablettes < 13 pouces (environ 1366px de large et détection tactile) */
         @media screen and (max-width: 1365px) and (orientation: landscape) and (hover: none) and (pointer: coarse) {
             #orientation-overlay { display: flex; }
             body { overflow: hidden !important; }
         }
 
-        body { overflow: hidden; height: 100vh; } /* UX immersive : Pas de scroll body */
+        body { overflow: hidden; height: 100vh; margin: 0; background: #0F1115; }
 
         .app-container {
             height: 100vh;
@@ -58,7 +57,9 @@
             z-index: 10;
         }
 
-        /* --- THE TACTICAL STAGE --- */
+        .section-title { font-family: 'Cinzel', serif; color: var(--primary-gold); font-size: 2.5rem; margin-bottom: 10px; }
+
+        /* --- THE TACTICAL STAGE (Desktop) --- */
         .tactical-stage {
             position: relative;
             width: 100%;
@@ -70,7 +71,6 @@
             perspective: 1000px;
         }
 
-        /* L'Équipe sur le terrain (Gauche) */
         .field-team {
             display: flex;
             flex-direction: column;
@@ -108,13 +108,9 @@
             border-bottom-color: var(--primary-gold);
         }
 
-        .player-trigger:hover .num, .player-trigger.active .num {
-            opacity: 1;
-            transform: scale(1.2);
-        }
+        .player-trigger:hover .num, .player-trigger.active .num { opacity: 1; transform: scale(1.2); }
 
-        /* Le Coach et sa Technologie (Droite) */
-        .hub-vision {
+        .coach-vision {
             position: relative;
             display: flex;
             justify-content: center;
@@ -128,7 +124,6 @@
             mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
         }
 
-        /* Tablette HQ */
         .hq-tablet {
             position: absolute;
             top: 35%;
@@ -152,7 +147,7 @@
             overflow: hidden;
         }
 
-        .mini-goal { position: absolute; top: 8px; right: 8px; width: 60px; opacity: 0.3; filter: brightness(2) sepia(1); }
+        .mini-goal { position: absolute; top: 8px; right: 8px; width: 60px; opacity: 0.3; }
         .beacon { position: absolute; width: 8px; height: 8px; background: #fff; border-radius: 50%; top: 28px; right: 35px; box-shadow: 0 0 15px #fff; animation: pulse 1s infinite alternate; }
 
         .node {
@@ -164,15 +159,15 @@
             font-family: 'Cinzel', serif; font-size: 0.6rem;
             color: var(--primary-gold);
             transition: 0.4s;
+            cursor: pointer;
         }
 
         .node.highlight { background: var(--primary-gold); color: #000; box-shadow: 0 0 15px var(--primary-gold); transform: scale(1.3); }
 
-        /* --- INTELLIGENCE PANEL (The AR Display) --- */
         .intel-panel {
             position: fixed;
             right: 40px;
-            bottom: 60px; /* Aligné sur le niveau du bouton "Lancer le Match" */
+            bottom: 60px;
             width: 340px;
             background: rgba(22, 26, 35, 0.98);
             border-left: 4px solid var(--primary-gold);
@@ -183,148 +178,67 @@
             transform: translateY(10px);
             transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
             z-index: 1000;
-            box-shadow: 0 10px 50px rgba(0,0,0,0.9);
         }
 
-        .intel-panel.show { 
-            opacity: 1; 
-            visibility: visible;
-            transform: translateY(0); 
-        }
-
-        .intel-title { font-family: 'Cinzel', serif; color: var(--primary-gold); font-size: 1.2rem; margin-bottom: 15px; letter-spacing: 2px; }
+        .intel-panel.show { opacity: 1; visibility: visible; transform: translateY(0); }
+        .intel-title { font-family: 'Cinzel', serif; color: var(--primary-gold); font-size: 1.2rem; margin-bottom: 15px; }
         .intel-body { color: var(--text-dim); font-size: 0.9rem; line-height: 1.8; }
 
         @keyframes pulse { from { opacity: 0.5; transform: scale(1); } to { opacity: 1; transform: scale(1.3); } }
 
+        /* --- MOBILE RESPONSIVE --- */
         @media (max-width: 1024px) {
-            html, body { 
-                height: auto !important; 
-                overflow-x: hidden !important; 
-                overflow-y: auto !important;
-                position: relative;
-                width: 100% !important;
-            }
+            html, body { overflow-x: hidden !important; width: 100% !important; height: auto !important; }
+            .app-container { height: auto !important; min-height: 100vh; padding: 80px 20px 40px; display: block; width: 100%; box-sizing: border-box; }
+            .services-header { margin-bottom: 30px; }
+            .section-title { font-size: 1.8rem; }
+
+            .tactical-stage { flex-direction: column; height: auto; perspective: none; align-items: center; display: flex; width: 100%; gap: 30px; }
             
-            .app-container { 
-                height: auto !important; 
-                min-height: 100vh; 
-                padding: 100px 10px 40px; 
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                width: 100%;
-                box-sizing: border-box;
-            }
+            .field-team { width: 100%; gap: 15px; display: flex; flex-direction: column; }
+            .player-trigger { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 12px; padding: 10px; width: 100%; box-sizing: border-box; }
+            .player-trigger img { width: 80px; height: 80px; border-radius: 8px; filter: brightness(0.9); }
+            .player-trigger .num { font-size: 1.8rem; opacity: 1; width: auto; }
 
-            .tactical-stage { 
-                display: flex;
-                flex-direction: column; 
-                height: auto; 
-                width: 100%;
-                perspective: none;
-                gap: 40px;
-                align-items: center;
-            }
+            .coach-vision { width: 100%; display: flex; flex-direction: column; align-items: center; margin-top: 20px; transform: none; }
+            .coach-main { width: 100%; max-width: 300px; height: auto; opacity: 0.4; margin-bottom: -40px; }
 
-            .field-team { 
-                display: flex;
-                flex-direction: column;
-                width: 100%;
-                padding: 0 10px;
-                box-sizing: border-box;
-                gap: 15px;
-                margin-bottom: 20px;
-            }
-
-            .player-trigger {
-                width: 100%;
-                display: flex;
-                align-items: center;
-                justify-content: flex-start;
-                background: rgba(255, 255, 255, 0.05);
-                border: 1px solid rgba(212, 175, 55, 0.2);
-                border-radius: 12px;
-                padding: 10px;
-                gap: 15px;
-            }
-
-            .player-trigger img { 
-                width: 80px; 
-                height: 80px;
-                border-radius: 8px;
-                filter: brightness(0.9) contrast(1.1);
-            }
-
-            .player-trigger .num { font-size: 1.8rem; width: auto; opacity: 1; }
-
-            /* Vision Coach & Tablette Mobile */
-            .coach-vision {
-                width: 100%;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                margin-top: 20px;
-            }
-
-            .coach-main {
-                height: 300px;
-                opacity: 0.5;
-                margin-bottom: -50px;
-            }
-
-            /* Tablette : Correction définitive par mise à l'échelle */
+            /* Fix Tablette Smartphone */
             .hq-tablet {
-                position: relative;
-                width: 240px; /* Taille originale conservée */
-                height: 170px;
-                transform: scale(1.2); /* Agrandie pour mobile */
-                margin: 40px auto; 
-                left: auto; top: auto;
-                box-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
-            }
-
-            /* Tablette sur petits écrans */
-            @media (max-width: 380px) {
-                .hq-tablet { transform: scale(1.1); margin: 30px auto; }
+                position: relative !important;
+                left: auto !important;
+                top: auto !important;
+                margin: 20px auto !important;
+                transform: none !important;
+                width: 280px !important;
+                height: 200px !important;
+                display: block;
             }
 
             .intel-panel { 
                 position: relative; 
                 width: 100%; 
-                margin: 20px 0;
                 right: auto; bottom: auto;
+                margin: 20px 0;
                 max-height: 0;
                 opacity: 0;
                 overflow: hidden;
                 display: block;
                 transition: all 0.6s ease;
-                background: linear-gradient(135deg, rgba(22, 26, 35, 0.98), rgba(15, 17, 21, 0.98));
-                border-left: 4px solid var(--primary-gold);
             }
 
-            .intel-panel.show { 
-                max-height: 1000px;
-                opacity: 1; 
-                padding: 25px;
-                margin-bottom: 40px;
-            }
+            .intel-panel.show { max-height: 1000px; opacity: 1; padding: 25px; margin-bottom: 40px; }
         }
 
-        @keyframes slideInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        @keyframes slideInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body>
 
     <div id="orientation-overlay">
-        <svg viewBox="0 0 24 24">
-            <path d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4M12,6A6,6 0 0,1 18,12A6,6 0 0,1 12,18A6,6 0 0,1 6,12A6,6 0 0,1 12,6M12,8A4,4 0 0,0 8,12A4,4 0 0,0 12,16A4,4 0 0,0 16,12A4,4 0 0,0 12,8Z" />
-        </svg>
+        <svg viewBox="0 0 24 24"><path d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4M12,6A6,6 0 0,1 18,12A6,6 0 0,1 12,18A6,6 0 0,1 6,12A6,6 0 0,1 12,6M12,8A4,4 0 0,0 8,12A4,4 0 0,0 12,16A4,4 0 0,0 16,12A4,4 0 0,0 12,8Z"/></svg>
         <h2 style="color: var(--primary-gold); font-family: 'Cinzel', serif;">Orientation Portrait Requise</h2>
-        <p style="color: var(--text-dim); margin-top: 10px;">Pour une expérience optimale sur tablette et mobile, veuillez faire pivoter votre appareil.</p>
+        <p style="color: var(--text-dim); margin-top: 10px;">Veuillez faire pivoter votre appareil.</p>
     </div>
 
     <header>
@@ -346,63 +260,45 @@
         </div>
 
         <div class="tactical-stage">
-            <!-- Terrain à gauche -->
             <div class="field-team">
-                <div class="player-trigger" data-id="1" data-title="Diagnostic Tactique" data-desc="Audit chirurgical de vos flux. Nous identifions les pertes de balles technologiques pour tracer le chemin le plus court vers la performance.">
+                <div class="player-trigger" data-id="1">
                     <span class="num">01</span>
                     <img src="hand balleur.jpeg" alt="Joueur 1">
                 </div>
-                <div class="player-trigger" data-id="2" data-title="Système Intelligent" data-desc="Architecture IA & No-Code. Nous bâtissons un moteur robuste qui automatise vos succès et scale vos opérations sans friction.">
+                <div class="player-trigger" data-id="2">
                     <span class="num">02</span>
-                    <img src="hand balleur.jpeg" alt="Joueur 2" style="margin-left: 40px;">
+                    <img src="hand balleur.jpeg" alt="Joueur 2" style="margin-left: 20px;">
                 </div>
-                <div class="player-trigger" data-id="3" data-title="Victoire Collective" data-desc="Management Coach & Hand. L'outil n'est rien sans l'équipe. Nous alignons l'humain sur la techno pour une exécution foudroyante.">
+                <div class="player-trigger" data-id="3">
                     <span class="num">03</span>
                     <img src="hand balleur.jpeg" alt="Joueur 3">
                 </div>
             </div>
 
-            <!-- Vision Coach au centre/droite -->
             <div class="coach-vision">
                 <img src="coach handball.jpg" alt="Coach" class="coach-main">
-                
-                <!-- Tablette Command -->
                 <div class="hq-tablet">
                     <div class="tablet-screen">
-                        <!-- Handball Court Markings -->
                         <svg width="100%" height="100%" style="position:absolute; top:0; left:0; pointer-events:none; opacity:0.4;">
-                            <!-- Court Outline -->
                             <rect x="0" y="0" width="100%" height="100%" fill="none" stroke="rgba(212,175,55,0.2)" stroke-width="2"/>
-                            <!-- Center Line -->
-                            <line x1="0" y1="160" x2="240" y2="160" stroke="rgba(212,175,55,0.2)" stroke-width="1"/>
-                            <!-- 6m Area (Solid) -->
-                            <path d="M 40,0 Q 40,80 120,80 Q 200,80 200,0" fill="none" stroke="var(--primary-gold)" stroke-width="1.5" opacity="0.6"/>
-                            <!-- 9m Line (Dashed) -->
-                            <path d="M 20,0 Q 20,110 120,110 Q 220,110 220,0" fill="none" stroke="var(--primary-gold)" stroke-width="1" stroke-dasharray="4,4" opacity="0.4"/>
+                            <line x1="0" y1="100" x2="240" y2="100" stroke="rgba(212,175,55,0.2)" stroke-width="1"/>
                         </svg>
-
                         <img src="images.png" class="mini-goal" alt="But">
                         <div class="beacon"></div>
                         <div class="node" id="n1" style="bottom: 25px; left: 30px;">01</div>
                         <div class="node" id="n2" style="bottom: 75px; left: 105px;">02</div>
                         <div class="node" id="n3" style="bottom: 35px; right: 50px;">03</div>
-                        
-                        <!-- Play Path -->
-                        <svg width="100%" height="100%" style="position:absolute; top:0; left:0; pointer-events:none; opacity:0.5;">
-                            <path d="M 40,130 Q 110,100 200,35" stroke="var(--primary-gold)" fill="none" stroke-dasharray="3"/>
-                        </svg>
                     </div>
                 </div>
 
-                <!-- Panneau d'Intelligence (Overlay) -->
                 <div class="intel-panel" id="intel-panel">
-                    <h4 class="intel-title" id="intel-title">Coup d'envoi</h4>
-                    <p class="intel-body" id="intel-body">En attente de sélection tactique...</p>
+                    <h4 class="intel-title" id="intel-title">Tactique IA</h4>
+                    <p class="intel-body" id="intel-body">En attente de sélection...</p>
                 </div>
             </div>
         </div>
 
-        <div style="margin-top: 50px;">
+        <div style="margin-top: 50px; text-align:center;">
             <a href="contact.html" class="cta-button">Lancer le Match</a>
         </div>
     </div>
@@ -425,36 +321,21 @@
         const body = document.getElementById('intel-body');
 
         const showDetails = (id) => {
-            // Reset states
             players.forEach(p => p.classList.remove('active'));
             nodes.forEach(n => n.classList.remove('highlight'));
-
-            // Set Active Player
             const activePlayer = document.querySelector(`.player-trigger[data-id="${id}"]`);
             if (activePlayer) activePlayer.classList.add('active');
-
-            // Set Highlight Node
             const targetNode = document.getElementById(`n${id}`);
             if (targetNode) targetNode.classList.add('highlight');
-
-            // Update Intel Panel Content
             title.innerText = serviceData[id].title;
             body.innerText = serviceData[id].desc;
-            
-            // Afficher le panneau AVANT le scroll
             panel.classList.add('show');
-
-            // UX Mobile Premium : Scroll vers le texte maintenant affiché
             if (window.innerWidth <= 1024) {
-                // Un délai très court suffit pour que le DOM se mette à jour
-                setTimeout(() => {
-                    panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }, 150);
+                setTimeout(() => { panel.scrollIntoView({ behavior: 'smooth', block: 'center' }); }, 150);
             }
         };
 
         const hideDetails = () => {
-            // Ne pas masquer sur mobile si on veut que le texte reste lisible après le clic
             if (window.innerWidth > 1024) {
                 players.forEach(p => p.classList.remove('active'));
                 nodes.forEach(n => n.classList.remove('highlight'));
@@ -462,15 +343,13 @@
             }
         };
 
-        // Desktop & Mobile Events (Players)
         players.forEach(player => {
             const id = player.getAttribute('data-id');
             player.addEventListener('mouseenter', () => showDetails(id));
             player.addEventListener('mouseleave', hideDetails);
-            player.addEventListener('click', () => showDetails(id)); // Ajout du clic pour mobile
+            player.addEventListener('click', () => showDetails(id));
         });
 
-        // Universal Events (Nodes - Tablet)
         nodes.forEach(node => {
             const id = node.innerText.replace('0', '');
             node.addEventListener('mouseenter', () => showDetails(id));
