@@ -398,7 +398,7 @@
             players.forEach(p => p.classList.remove('active'));
             nodes.forEach(n => n.classList.remove('highlight'));
 
-            // Set Active Player (Desktop)
+            // Set Active Player
             const activePlayer = document.querySelector(`.player-trigger[data-id="${id}"]`);
             if (activePlayer) activePlayer.classList.add('active');
 
@@ -406,23 +406,29 @@
             const targetNode = document.getElementById(`n${id}`);
             if (targetNode) targetNode.classList.add('highlight');
 
-            // Update Intel Panel
+            // Update Intel Panel Content
             title.innerText = serviceData[id].title;
             body.innerText = serviceData[id].desc;
+            
+            // Afficher le panneau AVANT le scroll
             panel.classList.add('show');
 
-            // UX Mobile Premium : Faire glisser la page sur le texte
+            // UX Mobile Premium : Scroll vers le texte maintenant affiché
             if (window.innerWidth <= 1024) {
+                // Un délai très court suffit pour que le DOM se mette à jour
                 setTimeout(() => {
-                    panel.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                }, 100); // Petit délai pour laisser l'animation de hauteur démarrer
+                    panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 150);
             }
         };
 
         const hideDetails = () => {
-            players.forEach(p => p.classList.remove('active'));
-            nodes.forEach(n => n.classList.remove('highlight'));
-            panel.classList.remove('show');
+            // Ne pas masquer sur mobile si on veut que le texte reste lisible après le clic
+            if (window.innerWidth > 1024) {
+                players.forEach(p => p.classList.remove('active'));
+                nodes.forEach(n => n.classList.remove('highlight'));
+                panel.classList.remove('show');
+            }
         };
 
         // Desktop & Mobile Events (Players)
