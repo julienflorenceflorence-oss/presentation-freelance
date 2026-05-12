@@ -37,11 +37,17 @@
                     </p>
                     <a href="methode.html" class="cta-button">Explorer la Méthode</a>
                 </div>
-                <div class="hero-image-container">
-                    <video autoplay loop muted playsinline style="width: 100%; border-radius: 5px; box-shadow: 0 0 50px rgba(0, 0, 0, 0.8); border: 1px solid rgba(212, 175, 55, 0.3); filter: grayscale(0.2) contrast(1.1); animation: pulseGlow 4s infinite alternate;">
-                        <source src="cerveau_4.2.mp4" type="video/mp4">
-                        Votre navigateur ne supporte pas la lecture de vidéos.
-                    </video>
+                <div class="hero-image-container" style="position: relative; perspective: 1000px;">
+                    <div style="position: relative; border-radius: 10px; overflow: hidden; box-shadow: 0 0 40px rgba(0,0,0,0.9), 0 0 20px rgba(212, 175, 55, 0.2); border: 1px solid rgba(212, 175, 55, 0.3); transform: rotateY(-5deg); transition: transform 0.5s ease;">
+                        <video autoplay loop muted playsinline style="width: 100%; display: block; filter: brightness(1.1) contrast(1.1); mix-blend-mode: lighten;">
+                            <source src="cerveau_4.2.mp4" type="video/mp4">
+                            Votre navigateur ne supporte pas la lecture de vidéos.
+                        </video>
+                        <div style="position: absolute; inset: 0; background: linear-gradient(45deg, rgba(15, 17, 21, 0.4) 0%, transparent 100%); pointer-events: none;"></div>
+                    </div>
+                    <!-- Élément de décoration Gold -->
+                    <div style="position: absolute; top: -15px; right: -15px; width: 60px; height: 60px; border-top: 2px solid var(--primary-gold); border-right: 2px solid var(--primary-gold); z-index: -1; opacity: 0.5;"></div>
+                    <div style="position: absolute; bottom: -15px; left: -15px; width: 60px; height: 60px; border-bottom: 2px solid var(--primary-gold); border-left: 2px solid var(--primary-gold); z-index: -1; opacity: 0.5;"></div>
                 </div>
             </div>
         </section>
