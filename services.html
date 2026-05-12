@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Services | Julien FLORENCE</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="prestige.css?v=2.0">
+    <link rel="stylesheet" href="prestige.css?v=2.1">
     <style>
         /* --- Orientation Lock Overlay --- */
         #orientation-overlay {
@@ -39,10 +39,10 @@
             body { overflow: hidden !important; }
         }
 
-        body { overflow: hidden; height: 100vh; margin: 0; background: #0F1115; }
+        body { overflow-x: hidden; overflow-y: auto; min-height: 100vh; margin: 0; background: #0F1115; }
 
         .app-container {
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -104,7 +104,7 @@
 
         .player-trigger:hover img, .player-trigger.active img {
             filter: brightness(1) contrast(1.1) drop-shadow(0 0 20px var(--gold-glow));
-            transform: scale(1.1) translateX(10px);
+            transform: scale(1.1);
             border-bottom-color: var(--primary-gold);
         }
 
