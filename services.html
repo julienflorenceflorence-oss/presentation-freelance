@@ -7,6 +7,39 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="prestige.css">
     <style>
+        /* --- Orientation Lock Overlay --- */
+        #orientation-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: var(--bg-dark);
+            z-index: 9999;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        #orientation-overlay svg {
+            width: 80px; height: 80px;
+            fill: var(--primary-gold);
+            margin-bottom: 20px;
+            animation: rotateDevice 2s infinite;
+        }
+
+        @keyframes rotateDevice {
+            0% { transform: rotate(0deg); }
+            50% { transform: rotate(-90deg); }
+            100% { transform: rotate(0deg); }
+        }
+
+        /* Bloquer paysage sur mobiles et tablettes < 13 pouces (environ 1366px de large et détection tactile) */
+        @media screen and (max-width: 1365px) and (orientation: landscape) and (hover: none) and (pointer: coarse) {
+            #orientation-overlay { display: flex; }
+            body { overflow: hidden; }
+        }
+
         body { overflow: hidden; height: 100vh; } /* UX immersive : Pas de scroll body */
 
         .app-container {
@@ -176,6 +209,14 @@
     </style>
 </head>
 <body>
+
+    <div id="orientation-overlay">
+        <svg viewBox="0 0 24 24">
+            <path d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4M12,6A6,6 0 0,1 18,12A6,6 0 0,1 12,18A6,6 0 0,1 6,12A6,6 0 0,1 12,6M12,8A4,4 0 0,0 8,12A4,4 0 0,0 12,16A4,4 0 0,0 16,12A4,4 0 0,0 12,8Z" />
+        </svg>
+        <h2 style="color: var(--primary-gold); font-family: 'Cinzel', serif;">Orientation Portrait Requise</h2>
+        <p style="color: var(--text-dim); margin-top: 10px;">Pour une expérience optimale sur tablette et mobile, veuillez faire pivoter votre appareil.</p>
+    </div>
 
     <header>
         <a href="index.html" class="logo">STRUC.IA</a>
