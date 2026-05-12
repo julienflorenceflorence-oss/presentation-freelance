@@ -7,7 +7,72 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="prestige.css">
     <style>
-        .about-card p { font-size: 0.95rem; color: var(--text-dim); line-height: 1.8; text-align: justify; }
+        body {
+            overflow: auto !important;
+            height: auto !important;
+        }
+        .app-container {
+            height: auto !important;
+            min-height: 100vh;
+        }
+        section {
+            justify-content: flex-start !important;
+            padding-top: 140px !important;
+            min-height: auto !important;
+            padding-bottom: 60px !important;
+        }
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        .about-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            padding: 40px;
+            border-radius: 4px;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        .about-card:hover {
+            border-color: var(--primary-gold);
+            background: rgba(212, 175, 55, 0.05);
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .about-card h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--primary-gold);
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .about-card h3 span {
+            font-size: 0.7rem;
+            opacity: 0.6;
+            border: 1px solid var(--primary-gold);
+            padding: 2px 8px;
+            border-radius: 2px;
+            letter-spacing: 1px;
+        }
+        .about-card p { font-size: 0.9rem; color: var(--text-dim); line-height: 1.8; text-align: justify; }
+        .highlight-prestige { color: var(--primary-gold); font-weight: 600; }
+
+        /* Correction Visibilité CTA */
+        .cta-container {
+            text-align: center;
+            margin-top: 80px;
+            margin-bottom: 40px;
+            padding-bottom: 40px;
+        }
+        .cta-button.prominent {
+            background: rgba(212, 175, 55, 0.1);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+        }
     </style>
 </head>
 <body>
@@ -46,6 +111,10 @@
                     <h3><span>04</span> Vision "Coaching Handball"</h3>
                     <p>Directement inspiré par le terrain : vision de jeu rapide, cohésion tactique et <span class="highlight-prestige">réactivité chirurgicale</span>.</p>
                 </div>
+            </div>
+
+            <div class="cta-container">
+                <a href="services.html" class="cta-button prominent">Explorer mes Services</a>
             </div>
         </section>
 
