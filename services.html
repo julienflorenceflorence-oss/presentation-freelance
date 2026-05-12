@@ -198,112 +198,92 @@
         @keyframes pulse { from { opacity: 0.5; transform: scale(1); } to { opacity: 1; transform: scale(1.3); } }
 
         @media (max-width: 1024px) {
-            body { overflow-y: auto !important; height: auto !important; }
-            .app-container { height: auto !important; min-height: 100vh; padding: 100px 20px 40px; justify-content: flex-start; }
+            html, body { height: auto !important; overflow-x: hidden !important; overflow-y: auto !important; }
+            .app-container { 
+                height: auto !important; 
+                min-height: 100vh; 
+                padding: 80px 15px 40px; 
+                justify-content: flex-start;
+                display: block; /* Passage en block pour un flux naturel */
+            }
             
-            .services-header { margin-bottom: 30px; }
-            .section-title { font-size: 1.8rem; }
+            .services-header { margin-bottom: 25px; }
+            .section-title { font-size: 1.6rem; }
 
             .tactical-stage { 
                 flex-direction: column; 
                 height: auto; 
-                gap: 30px;
+                gap: 20px;
                 perspective: none;
+                display: block;
             }
 
-            /* Équipe en mode "Cards" sur mobile - RÉAFFICHÉE */
+            /* Équipe en mode "Cards" sur mobile */
             .field-team { 
                 display: flex;
                 flex-direction: column; 
                 width: 100%;
-                gap: 15px;
-                margin-bottom: 20px;
+                gap: 12px;
+                margin-bottom: 30px;
             }
 
             .player-trigger {
-                background: rgba(255, 255, 255, 0.03);
-                border: 1px solid rgba(212, 175, 55, 0.1);
-                padding: 15px;
+                background: rgba(255, 255, 255, 0.04);
+                border: 1px solid rgba(212, 175, 55, 0.2);
+                padding: 12px;
                 border-radius: 12px;
                 width: 100%;
-                justify-content: flex-start;
-                gap: 15px;
-                display: flex;
-                align-items: center;
-                cursor: pointer;
+                box-sizing: border-box;
             }
 
             .player-trigger img { 
-                width: 100px; 
-                height: 100px;
-                object-fit: cover;
-                border-radius: 10px;
-                border: 1px solid rgba(212, 175, 55, 0.4);
-                filter: brightness(0.9) contrast(1.1);
+                width: 80px; 
+                height: 80px;
+                border-radius: 8px;
             }
 
-            .player-trigger .num { font-size: 2rem; width: 40px; opacity: 1; color: var(--primary-gold); font-family: 'Cinzel', serif; }
-
-            .player-trigger.active {
-                background: rgba(212, 175, 55, 0.1);
-                border-color: var(--primary-gold);
-                box-shadow: 0 0 20px rgba(212, 175, 55, 0.1);
-            }
-
-            .player-trigger.active img {
-                filter: brightness(1.2) contrast(1.2);
-                transform: scale(1.1);
-            }
-
-            /* Coach Vision : Immersion Premium */
+            /* Coach Vision & Tablette */
             .coach-vision {
                 width: 100%;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                margin-top: 30px;
+                margin-top: 10px;
+                position: relative;
             }
 
             .coach-main {
-                height: 350px;
-                width: auto;
-                opacity: 0.6;
-                margin-bottom: -60px;
+                height: 320px;
+                opacity: 0.5;
+                margin-bottom: -40px;
             }
 
             .hq-tablet {
                 position: relative;
-                top: auto;
-                left: auto;
                 width: 100%;
-                max-width: 320px;
-                height: 220px;
-                transform: none;
-                margin: 0 auto 30px;
+                max-width: 340px;
+                height: 240px;
+                margin: 0 auto 20px;
+                z-index: 30;
             }
 
-            /* Panel Info : Intégré directement sous la carte active */
+            /* Panel Info : Totalement fluide */
             .intel-panel { 
                 position: relative; 
                 width: 100%; 
                 right: auto;
                 bottom: auto;
-                margin-top: 30px;
-                border: 1px solid rgba(212, 175, 55, 0.3);
-                background: linear-gradient(135deg, rgba(22, 26, 35, 0.95), rgba(15, 17, 21, 0.95));
-                transform: none !important;
+                margin-top: 20px;
                 max-height: 0;
                 opacity: 0;
-                overflow: hidden;
-                display: block; /* Toujours block pour le scroll, mais masqué par height/opacity */
-                transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+                overflow: visible; /* Permettre au texte de déborder si besoin après l'animation */
+                transition: all 0.6s ease;
+                padding: 0;
+                box-sizing: border-box;
             }
 
             .intel-panel.show { 
-                max-height: 500px;
+                max-height: 1000px; /* Large limite pour éviter toute coupure */
                 opacity: 1; 
-                padding: 25px;
-                margin-bottom: 40px;
+                padding: 20px;
+                margin-bottom: 30px;
             }
         }
 
