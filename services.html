@@ -211,31 +211,48 @@
                 perspective: none;
             }
 
-            /* Équipe en mode "Cards" sur mobile - MASQUÉE selon demande */
+            /* Équipe en mode "Cards" sur mobile - RÉAFFICHÉE */
             .field-team { 
-                display: none;
-            }
-
-            .services-header p {
-                content: "SÉLECTIONNEZ UN POINT SUR LA TABLETTE";
-            }
-
-            /* Tablette HQ : Plus grande pour interaction mobile */
-            .hq-tablet {
-                position: relative;
-                top: auto;
-                left: auto;
+                display: flex;
+                flex-direction: column; 
                 width: 100%;
-                height: 280px;
-                transform: none;
+                gap: 15px;
                 margin-bottom: 20px;
             }
 
-            .node {
-                width: 40px; height: 40px; /* Plus gros pour le touch */
-                font-size: 1rem;
+            .player-trigger {
+                background: rgba(255, 255, 255, 0.03);
+                border: 1px solid rgba(212, 175, 55, 0.1);
+                padding: 15px;
+                border-radius: 12px;
+                width: 100%;
+                justify-content: flex-start;
+                gap: 15px;
+                display: flex;
+                align-items: center;
                 cursor: pointer;
-                background: rgba(0,0,0,0.6);
+            }
+
+            .player-trigger img { 
+                width: 60px; 
+                height: 60px;
+                object-fit: cover;
+                border-radius: 50%;
+                border: 1px solid var(--primary-gold);
+                filter: brightness(0.8) contrast(1.1);
+            }
+
+            .player-trigger .num { font-size: 1.5rem; width: 30px; opacity: 1; color: var(--primary-gold); font-family: 'Cinzel', serif; }
+
+            .player-trigger.active {
+                background: rgba(212, 175, 55, 0.1);
+                border-color: var(--primary-gold);
+                box-shadow: 0 0 20px rgba(212, 175, 55, 0.1);
+            }
+
+            .player-trigger.active img {
+                filter: brightness(1.2) contrast(1.2);
+                transform: scale(1.1);
             }
 
             /* Panel Info : Intégré directement sous la carte active */
@@ -408,11 +425,12 @@
             panel.classList.remove('show');
         };
 
-        // Desktop Events (Players)
+        // Desktop & Mobile Events (Players)
         players.forEach(player => {
             const id = player.getAttribute('data-id');
             player.addEventListener('mouseenter', () => showDetails(id));
             player.addEventListener('mouseleave', hideDetails);
+            player.addEventListener('click', () => showDetails(id)); // Ajout du clic pour mobile
         });
 
         // Universal Events (Nodes - Tablet)
