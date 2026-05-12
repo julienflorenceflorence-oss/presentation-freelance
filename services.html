@@ -244,14 +244,23 @@
                 width: 100%; 
                 right: auto;
                 bottom: auto;
-                margin-top: 10px;
+                margin-top: 30px;
                 border: 1px solid rgba(212, 175, 55, 0.3);
                 background: linear-gradient(135deg, rgba(22, 26, 35, 0.95), rgba(15, 17, 21, 0.95));
                 transform: none !important;
-                display: none; /* Caché par défaut, géré en JS */
+                max-height: 0;
+                opacity: 0;
+                overflow: hidden;
+                display: block; /* Toujours block pour le scroll, mais masqué par height/opacity */
+                transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
             }
 
-            .intel-panel.show { display: block; animation: slideInUp 0.4s ease; }
+            .intel-panel.show { 
+                max-height: 500px;
+                opacity: 1; 
+                padding: 25px;
+                margin-bottom: 40px;
+            }
         }
 
         @keyframes slideInUp {
@@ -384,6 +393,13 @@
             title.innerText = serviceData[id].title;
             body.innerText = serviceData[id].desc;
             panel.classList.add('show');
+
+            // UX Mobile Premium : Faire glisser la page sur le texte
+            if (window.innerWidth <= 1024) {
+                setTimeout(() => {
+                    panel.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }, 100); // Petit délai pour laisser l'animation de hauteur démarrer
+            }
         };
 
         const hideDetails = () => {
