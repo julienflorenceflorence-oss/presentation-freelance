@@ -30,11 +30,17 @@
         .about-card {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(212, 175, 55, 0.1);
-            padding: 40px;
+            padding: 30px;
             border-radius: 4px;
             transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
             position: relative;
             overflow: hidden;
+            aspect-ratio: 1 / 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
         }
         .about-card:hover {
             border-color: var(--primary-gold);
@@ -45,11 +51,12 @@
         .about-card h3 {
             font-family: 'Cinzel', serif;
             color: var(--primary-gold);
-            font-size: 1.1rem;
-            margin-bottom: 25px;
+            font-size: 1rem;
+            margin-bottom: 20px;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 15px;
+            gap: 10px;
         }
         .about-card h3 span {
             font-size: 0.7rem;
@@ -58,8 +65,9 @@
             padding: 2px 8px;
             border-radius: 2px;
             letter-spacing: 1px;
+            margin-bottom: 5px;
         }
-        .about-card p { font-size: 0.9rem; color: var(--text-dim); line-height: 1.8; text-align: justify; }
+        .about-card p { font-size: 0.85rem; color: var(--text-dim); line-height: 1.6; text-align: center; }
         .highlight-prestige { color: var(--primary-gold); font-weight: 600; }
 
         /* Correction Visibilité CTA Ultra-Premium */
