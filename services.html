@@ -211,60 +211,31 @@
                 perspective: none;
             }
 
-            /* Équipe en mode "Cards" sur mobile */
+            /* Équipe en mode "Cards" sur mobile - MASQUÉE selon demande */
             .field-team { 
-                flex-direction: column; 
-                width: 100%;
-                gap: 15px;
-                margin-bottom: 0;
+                display: none;
             }
 
-            .player-trigger {
-                background: rgba(255, 255, 255, 0.03);
-                border: 1px solid rgba(212, 175, 55, 0.1);
-                padding: 15px;
-                border-radius: 12px;
-                width: 100%;
-                justify-content: flex-start;
-                gap: 15px;
+            .services-header p {
+                content: "SÉLECTIONNEZ UN POINT SUR LA TABLETTE";
             }
 
-            .player-trigger img { 
-                width: 60px; 
-                height: 60px;
-                object-fit: cover;
-                border-radius: 50%;
-                border: 1px solid var(--primary-gold);
-            }
-
-            .player-trigger .num { font-size: 1.5rem; width: 30px; }
-
-            .player-trigger:hover img, .player-trigger.active img {
-                transform: scale(1.05);
-            }
-
-            /* Coach Vision : Plus compacte et intégrée */
-            .coach-vision {
-                width: 100%;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .coach-main {
-                height: 300px;
-                margin-bottom: -50px;
-                opacity: 0.6;
-            }
-
+            /* Tablette HQ : Plus grande pour interaction mobile */
             .hq-tablet {
                 position: relative;
                 top: auto;
                 left: auto;
                 width: 100%;
-                height: 200px;
+                height: 280px;
                 transform: none;
                 margin-bottom: 20px;
+            }
+
+            .node {
+                width: 40px; height: 40px; /* Plus gros pour le touch */
+                font-size: 1rem;
+                cursor: pointer;
+                background: rgba(0,0,0,0.6);
             }
 
             /* Panel Info : Intégré directement sous la carte active */
@@ -384,48 +355,56 @@
         const nav = document.getElementById('nav');
         burger.addEventListener('click', () => { nav.classList.toggle('active'); burger.classList.toggle('toggle'); });
 
+        const serviceData = {
+            1: { title: "Diagnostic Tactique", desc: "Audit chirurgical de vos flux. Nous identifions les pertes de balles technologiques pour tracer le chemin le plus court vers la performance." },
+            2: { title: "Système Intelligent", desc: "Architecture IA & No-Code. Nous bâtissons un moteur robuste qui automatise vos succès et scale vos opérations sans friction." },
+            3: { title: "Victoire Collective", desc: "Management Coach & Hand. L'outil n'est rien sans l'équipe. Nous alignons l'humain sur la techno pour une exécution foudroyante." }
+        };
+
         const players = document.querySelectorAll('.player-trigger');
+        const nodes = document.querySelectorAll('.node');
         const panel = document.getElementById('intel-panel');
         const title = document.getElementById('intel-title');
         const body = document.getElementById('intel-body');
 
+        const showDetails = (id) => {
+            // Reset states
+            players.forEach(p => p.classList.remove('active'));
+            nodes.forEach(n => n.classList.remove('highlight'));
+
+            // Set Active Player (Desktop)
+            const activePlayer = document.querySelector(`.player-trigger[data-id="${id}"]`);
+            if (activePlayer) activePlayer.classList.add('active');
+
+            // Set Highlight Node
+            const targetNode = document.getElementById(`n${id}`);
+            if (targetNode) targetNode.classList.add('highlight');
+
+            // Update Intel Panel
+            title.innerText = serviceData[id].title;
+            body.innerText = serviceData[id].desc;
+            panel.classList.add('show');
+        };
+
+        const hideDetails = () => {
+            players.forEach(p => p.classList.remove('active'));
+            nodes.forEach(n => n.classList.remove('highlight'));
+            panel.classList.remove('show');
+        };
+
+        // Desktop Events (Players)
         players.forEach(player => {
-            const showDetails = () => {
-                const id = player.getAttribute('data-id');
-                
-                // Reset states
-                players.forEach(p => p.classList.remove('active'));
-                document.querySelectorAll('.node').forEach(n => n.classList.remove('highlight'));
-
-                // Set Active
-                player.classList.add('active');
-                const targetNode = document.getElementById(`n${id}`);
-                if (targetNode) targetNode.classList.add('highlight');
-
-                // Update Intel Panel
-                title.innerText = player.getAttribute('data-title');
-                body.innerText = player.getAttribute('data-desc');
-                panel.classList.add('show');
-            };
-
-            const hideDetails = () => {
-                player.classList.remove('active');
-                const id = player.getAttribute('data-id');
-                const targetNode = document.getElementById(`n${id}`);
-                if (targetNode) targetNode.classList.remove('highlight');
-                panel.classList.remove('show');
-            };
-
-            // Desktop Hover
-            player.addEventListener('mouseenter', showDetails);
+            const id = player.getAttribute('data-id');
+            player.addEventListener('mouseenter', () => showDetails(id));
             player.addEventListener('mouseleave', hideDetails);
+        });
 
-            // Mobile/Tablet Support (Click)
-            player.addEventListener('click', (e) => {
-                if (window.innerWidth <= 1024) {
-                    showDetails();
-                }
-            });
+        // Universal Events (Nodes - Tablet)
+        nodes.forEach(node => {
+            const id = node.innerText.replace('0', '');
+            node.addEventListener('mouseenter', () => showDetails(id));
+            node.addEventListener('mouseleave', hideDetails);
+            node.addEventListener('click', () => showDetails(id));
         });
     </script>
 </body>
